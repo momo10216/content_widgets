@@ -1,0 +1,6 @@
+Facebook	https://developers.facebook.com/docs/plugins/
+Google+		https://developers.google.com/+/web/badge/
+Instagram	https://www.instagram.com/developer/embedding/
+Google Search	http://xahlee.info/js/google_search.html
+RSS		http://www.rssfeedwidget.com/
+
