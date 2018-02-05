@@ -12,14 +12,14 @@
 // No direct access
 defined('_JEXEC') or die('Restricted access');
 
-class Widget {
+class WidgetCoinMarketCap {
 
 	public static function getHtml($params) {
 		return '<script type="text/javascript" src="https://files.coinmarketcap.com/static/widget/currency.js"></script>
 <div class="coinmarketcap-currency-widget" data-currency="'.self::_hashget($params, 'currency').'" data-base="'.self::_hashget($params, 'base').'" ></div>';
 	}
 
-	private function _hashget($hashmap, $key) {
+	private static function _hashget($hashmap, $key) {
 		if (isset($hashmap[$key])) {
 			return $hashmap[$key];
 		}

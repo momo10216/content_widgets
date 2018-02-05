@@ -16,6 +16,7 @@ jimport('joomla.plugin.plugin');
 
 class plgContentplg_nok_widgets extends JPlugin {
 	private $_fields = array('widget');
+
 	public function onContentPrepare($context, &$article, &$params, $limitstart) {
 		$app = JFactory::getApplication();
 	  	$globalParams = $this->params;
@@ -25,6 +26,7 @@ class plgContentplg_nok_widgets extends JPlugin {
 			$hits = preg_match_all('#{'.$field.'[\s]+([^}]*)}#s', $article->text, $matches);
 			if (!empty($hits)) {
 				for ($i=0; $i<$hits; $i++) {
+					$found = true;
 					$entryParamsText = $matches[1][$i];
 					$plgParams = $this->_get_params($globalParams, $entryParamsText);
 					switch ($field) {
@@ -59,18 +61,19 @@ class plgContentplg_nok_widgets extends JPlugin {
 	}
 
 	private function _loadAndRunWidgetClass($params) {
-		$dir = '/plugins/content/plg_nok_widgets/widgets/';
-		switch ($this->_hashget($params, 'provider');) {
+		$dir = JPATH_PLUGINS.'/content/plg_nok_widgets/widgets/';
+		switch ($this->_hashget($params, 'provider')) {
 			case 'coinmarketcap.com':
-				JLoader::register('Widget', $dir.'coinmarketcap.com.php', true);
+				JLoader::register('WidgetCoinMarketCap', $dir.'coinmarketcap.com.php', true);
+				return WidgetCoinMarketCap::getHtml($params);
 				break;
 			case 'youtube.com':
-				JLoader::register('Widget', $dir.'youtube.com.php', true);
+				JLoader::register('WidgetYouTube', $dir.'youtube.com.php', true);
+				return WidgetYouTube::getHtml($params);
 				break;
 			default:
 				return '';
 		}
-		return Widget::getHtml($params);
 	}
 
 	private function _hashget($hashmap, $key) {

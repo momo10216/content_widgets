@@ -7,10 +7,11 @@
 	<license>GNU/GPL http://www.gnu.org/copyleft/gpl.html</license>
 	<authorEmail>momo_102@bluemail.ch</authorEmail>
 	<authorUrl>http://kuem.in/</authorUrl>
-	<version>1.0</version>
+	<version>0.1</version>
 	<description>PLG_NOK_WIDGETS_APP_DESC</description>
 	<files>
 		<filename plugin="plg_nok_widgets">plg_nok_widgets.php</filename>
+		<folder>widgets</folder>
 		<filename>index.html</filename>
 	</files>
 	<languages folder="language">
