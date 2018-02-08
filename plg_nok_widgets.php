@@ -71,6 +71,10 @@ class plgContentplg_nok_widgets extends JPlugin {
 				JLoader::register('WidgetYouTube', $dir.'youtube.com.php', true);
 				return WidgetYouTube::getHtml($params);
 				break;
+			case 'facebook.com':
+				JLoader::register('WidgetFacebook', $dir.'facebook.com.php', true);
+				return WidgetFacebook::getHtml($params);
+				break;
 			default:
 				return '';
 		}
